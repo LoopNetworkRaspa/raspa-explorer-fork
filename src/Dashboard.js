@@ -74,10 +74,6 @@ function Dashboard() {
                                 <img  src="logo-mobile.png"/>
                             </div>
                         </Col>
-                        {/*<Col md={12} className='d-flex flex-row justify-content-start text-light d-xs-none align-items-center'>*/}
-                        {/*  <img className="d-md-none" src="/logo-mobile.png" />*/}
-                        {/*  <img className="d-none d-md-block" src="/logo.png" />*/}
-                        {/*</Col>*/}
                     </Row>
                     <Row>
                         <Col xs={11}>
