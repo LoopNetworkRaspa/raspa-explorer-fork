@@ -203,7 +203,7 @@ function App() {
             <Container className="footer webpage px-sm-5 py-3 text-center madewith" fluid>
               <Row className="d-none d-sm-block">
                 <Col>
-                  Made with <font className="fs-5" color="red">♥</font> by Kaspa developers
+                  Forked from kaspa explorer made by kaspa developer
                   <span className="ms-3">
                     <OverlayTrigger placement="left" overlay={<Tooltip id="github">Source code</Tooltip>}>
                       <a className="blockinfo-link" href="https://github.com/lAmeR1/kaspa-explorer" target="_blank"><FaGithub size="1.3rem" /></a>
@@ -221,7 +221,7 @@ function App() {
               </Row>
               <Row className="d-sm-none px-0">
                 <Col className="px-0">
-                  Made with <font className="fs-5" color="red">♥</font> by Raspa developers
+                    Forked from kaspa explorer made by kaspa developer
                 </Col>
               </Row>
               <Row className="py-1 d-sm-none px-0">
