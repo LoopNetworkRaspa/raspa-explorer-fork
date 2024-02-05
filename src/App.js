@@ -28,7 +28,10 @@ import { getBlock } from './kaspa-api-client';
 // moment.locale(locale);
 // moment.locale('en');
 
-const buildVersion = process.env.REACT_APP_VERCEL_GIT_COMMIT_SHA || "xxxxxx"
+const SOCKET_SERVER_URL = process.env.REACT_APP_SOCKET_SERVER_URL || "wss://api.kaspa.org"
+const REST_API_SERVER_URL = process.env.REACT_APP_REST_API_SERVER_URL || "https://api.kaspa.org"
+const COIN_NAME = process.env.REACT_APP_COIN_NAME || "KAS"
+const BUILD_VERSION = process.env.REACT_APP_VERCEL_GIT_COMMIT_SHA || "xxxxxx"
 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -44,7 +47,8 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-const socket = io("wss://api.kaspa.org", {
+// const socket = io("wss://api.kaspa.org", {
+const socket = io(`${SOCKET_SERVER_URL}`, {
   path: '/ws/socket.io'
 });
 
@@ -89,7 +93,8 @@ function App() {
   }
 
   const updatePrice = () => {
-    fetch(`https://api.kaspa.org/info/market-data`, {
+    // fetch(`https://api.kaspa.org/info/market-data`, {
+    fetch(`${REST_API_SERVER_URL}/info/market-data`, {
       headers: { "Cache-Control": "no-cache" }
     })
       .then(response => response.json())
@@ -176,7 +181,8 @@ function App() {
                     <Nav.Item><NavLink className="nav-link fs-5" onClick={closeMenuIfNeeded} to={"/blocks"}>Blocks</NavLink></Nav.Item>
                     <Nav.Item><NavLink className="nav-link fs-5" onClick={closeMenuIfNeeded} to={"/txs"}>Transactions</NavLink></Nav.Item>
                   </Nav>
-                  <div className='ms-auto navbar-price'>${price} <span className="text-light">/ KAS</span></div>
+                  {/* <div className='ms-auto navbar-price'>${price} <span className="text-light">/ KAS</span></div> */}
+                  <div className='ms-auto navbar-price'>$ 0.00 <span className="text-light">/ {COIN_NAME}</span></div>
                 </Navbar.Collapse>
               </Container>
             </Navbar>
@@ -221,7 +227,7 @@ function App() {
                     </OverlayTrigger>
                   </span>
                   <span className="px-3 build">|</span>
-                  <span className="build">Build version: {buildVersion.substring(0, 8)}</span>
+                  <span className="build">Build version: {BUILD_VERSION.substring(0, 8)}</span>
                 </Col>
               </Row>
               <Row className="d-sm-none px-0">
@@ -246,7 +252,7 @@ function App() {
               </Row>
               <Row className="d-sm-none px-0">
                 <Col>
-                  <span className="build">Build version: {buildVersion.substring(0, 8)}</span>
+                  <span className="build">Build version: {BUILD_VERSION.substring(0, 8)}</span>
                 </Col>
               </Row>
             </Container>

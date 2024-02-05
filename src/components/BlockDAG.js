@@ -9,6 +9,7 @@ const BlockDAGBox = () => {
     const [data, setData] = useState({});
     const [isConnected, setIsConnected] = useState(false);
 
+    const [networkName, setNetworkName] = useState();
     const [blockCount, setBlockCount] = useState();
     const [headerCount, setHeaderCount] = useState("");
     const [virtualDaaScore, setVirtualDaaScore] = useState("");
@@ -19,6 +20,7 @@ const BlockDAGBox = () => {
 
         console.log('DAG Info ', dag_info)
 
+        setNetworkName(dag_info.networkName)
         setBlockCount(dag_info.blockCount)
         setHeaderCount(dag_info.headerCount)
         setVirtualDaaScore(dag_info.virtualDaaScore)
@@ -107,7 +109,8 @@ const BlockDAGBox = () => {
                         Network name
                     </td>
                     <td className="pt-1 text-nowrap">
-                        KASPA MAINNET
+                        {/* KASPA MAINNET */}
+                        {networkName}
                     </td>
                 </tr>
                 <tr>

@@ -13,6 +13,8 @@ import BlueScoreContext from "./BlueScoreContext.js";
 import CopyButton from "./CopyButton.js";
 import PriceContext from "./PriceContext.js";
 
+const COIN_NAME = process.env.REACT_APP_COIN_NAME || "KAS"
+
 const BlockLamp = (props) => {
     return <OverlayTrigger overlay={<Tooltip>It is a {props.isBlue ? "blue" : "red"} block!</Tooltip>}>
         <div className={`ms-3 block-lamp-${props.isBlue ? "blue" : "red"}`} />
@@ -250,7 +252,8 @@ const BlockInfo = () => {
                                                                     </Link>
                                                                     <CopyButton text={getAddrFromOutputs(txInfo[txInput.previousOutpoint.transactionId]["outputs"], txInput.previousOutpoint.index || 0)} />
                                                                 </Col><Col className="block-utxo-amount-minus" xs={12} sm={4} md={2}>
-                                                                    -{numberWithCommas(getAmountFromOutputs(txInfo[txInput.previousOutpoint.transactionId]["outputs"], txInput.previousOutpoint.index || 0))}&nbsp;KAS
+                                                                    {/* -{numberWithCommas(getAmountFromOutputs(txInfo[txInput.previousOutpoint.transactionId]["outputs"], txInput.previousOutpoint.index || 0))}&nbsp;KAS */}
+                                                                    -{numberWithCommas(getAmountFromOutputs(txInfo[txInput.previousOutpoint.transactionId]["outputs"], txInput.previousOutpoint.index || 0))}&nbsp;{COIN_NAME}
                                                                 </Col></>
                                                                 :
                                                                 <><Col xs={12} sm={8} md={9} lg={9} xl={8} xxl={7} className="text-truncate">
@@ -276,18 +279,21 @@ const BlockInfo = () => {
                                                                 </Link>
 
                                                                 <CopyButton text={txOutput.verboseData.scriptPublicKeyAddress} />
-                                                            </Col><Col className="block-utxo-amount" xs={12} sm={4} md={3}>+{numberWithCommas(txOutput.amount / 100000000)}&nbsp;KAS</Col>
+                                                            {/* </Col><Col className="block-utxo-amount" xs={12} sm={4} md={3}>+{numberWithCommas(txOutput.amount / 100000000)}&nbsp;KAS</Col> */}
+                                                            </Col><Col className="block-utxo-amount" xs={12} sm={4} md={3}>+{numberWithCommas(txOutput.amount / 100000000)}&nbsp;{COIN_NAME}</Col>
                                                         </Row>)}
                                                     </Container>
                                                 </Col>
                                             </Col>
                                             <Col sm={5} md={4}>
                                                 <div className="utxo-header mt-3">tx amount</div>
-                                                <div className="utxo-value d-flex flex-row"><div className="utxo-amount">{(numberWithCommas(tx.outputs.reduce((a, b) => (a || 0) + parseInt(b.amount), 0) / 100000000))} KAS</div></div>
+                                                {/* <div className="utxo-value d-flex flex-row"><div className="utxo-amount">{(numberWithCommas(tx.outputs.reduce((a, b) => (a || 0) + parseInt(b.amount), 0) / 100000000))} KAS</div></div> */}
+                                                <div className="utxo-value d-flex flex-row"><div className="utxo-amount">{(numberWithCommas(tx.outputs.reduce((a, b) => (a || 0) + parseInt(b.amount), 0) / 100000000))} {COIN_NAME}</div></div>
                                             </Col>
                                             <Col sm={3} md={2}>
                                                 <div className="utxo-header mt-3">tx value</div>
-                                                <div className="utxo-value">{(tx.outputs.reduce((a, b) => (a || 0) + parseInt(b.amount), 0) / 100000000 * price).toFixed(2)} $</div>
+                                                {/* <div className="utxo-value">{(tx.outputs.reduce((a, b) => (a || 0) + parseInt(b.amount), 0) / 100000000 * price).toFixed(2)} $</div> */}
+                                                <div className="utxo-value">{(tx.outputs.reduce((a, b) => (a || 0) + parseInt(b.amount), 0) / 100000000 * 0).toFixed(2)} $</div>
                                             </Col>
                                             <Col sm={4} md={6}>
                                                 <div className="utxo-header mt-3">details</div>

@@ -16,6 +16,8 @@ import UtxoPagination from "./UtxoPagination.js";
 import QRCodeStyling from "qr-code-styling";
 import QrButton from "./QrButton";
 
+const ADDRESS_TYPE = process.env.REACT_APP_ADDRESS_TYPE || "kaspa"
+const COIN_NAME = process.env.REACT_APP_COIN_NAME || "KAS"
 
 const AddressInfoPage = () => {
     const { addr } = useParams();
@@ -268,7 +270,8 @@ const AddressInfo = () => {
                 <Col md={12} className="mt-sm-4">
 
                     <div className="addressinfo-header">Address</div>
-                    <div className="utxo-value-mono"><span class="addressinfo-color">kaspa:</span>{addr.substring(6, addr.length - 8)}<span class="addressinfo-color">{addr.substring(addr.length - 8)}</span>
+                    {/* <div className="utxo-value-mono"><span class="addressinfo-color">kaspa:</span>{addr.substring(6, addr.length - 8)}<span class="addressinfo-color">{addr.substring(addr.length - 8)}</span> */}
+                    <div className="utxo-value-mono"><span class="addressinfo-color">{ADDRESS_TYPE}:</span>{addr.substring(12, addr.length - 8)}<span class="addressinfo-color">{addr.substring(addr.length - 8)}</span>
                         <CopyButton size="2rem" text={addr} />
                         <QrButton addr="{addr}" onClick={() => setShowQr(!showQr)} />
 
@@ -281,7 +284,8 @@ const AddressInfo = () => {
                 <Col sm={6} md={4}>
                     <div className="addressinfo-header mt-4">balance</div>
                     <div className="utxo-value d-flex">
-                        {addressBalance !== undefined ? <div className="utxo-amount">+{numberWithCommas(addressBalance / 100000000)} KAS</div> : <Spinner animation="border" variant="primary" />}</div>
+                        {/* {addressBalance !== undefined ? <div className="utxo-amount">+{numberWithCommas(addressBalance / 100000000)} KAS</div> : <Spinner animation="border" variant="primary" />}</div> */}
+                        {addressBalance !== undefined ? <div className="utxo-amount">+{numberWithCommas(addressBalance / 100000000)} {COIN_NAME}</div> : <Spinner animation="border" variant="primary" />}</div>
                 </Col>
                 <Col sm={6} md={4}>
                     <div className="addressinfo-header mt-4 ms-sm-5">UTXOs count</div>
@@ -291,7 +295,8 @@ const AddressInfo = () => {
             <Row>
                 <Col sm={6} md={4}>
                     <div className="addressinfo-header addressinfo-header-border mt-4 mt-sm-4 pt-sm-4 me-sm-5">value</div>
-                    <div className="utxo-value">{numberWithCommas((addressBalance / 100000000 * price).toFixed(2))} USD</div>
+                    {/* <div className="utxo-value">{numberWithCommas((addressBalance / 100000000 * price).toFixed(2))} USD</div> */}
+                    <div className="utxo-value">{numberWithCommas((addressBalance / 100000000 * 0).toFixed(2))} USD</div>
                 </Col>
                 <Col sm={6} md={4}>
                     <div className="addressinfo-header addressinfo-header-border mt-4 mt-sm-4 pt-sm-4 ms-sm-5">Transactions count</div>
@@ -355,8 +360,10 @@ const AddressInfo = () => {
                             <div className="utxo-value">
                                 <Link className="blockinfo-link" to={`/txs/${x.transaction_id}`} >
                                     {getAmount(x.outputs, x.inputs) > 0 ?
-                                        <span className="utxo-amount">+{numberWithCommas(floatToStr(getAmount(x.outputs, x.inputs)))}&nbsp;KAS</span> :
-                                        <span className="utxo-amount-minus">{numberWithCommas(floatToStr(getAmount(x.outputs, x.inputs)))}&nbsp;KAS</span>}
+                                        // <span className="utxo-amount">+{numberWithCommas(floatToStr(getAmount(x.outputs, x.inputs)))}&nbsp;KAS</span> :
+                                        <span className="utxo-amount">+{numberWithCommas(floatToStr(getAmount(x.outputs, x.inputs)))}&nbsp;{COIN_NAME}</span> :
+                                        // <span className="utxo-amount-minus">{numberWithCommas(floatToStr(getAmount(x.outputs, x.inputs)))}&nbsp;KAS</span>}
+                                        <span className="utxo-amount-minus">{numberWithCommas(floatToStr(getAmount(x.outputs, x.inputs)))}&nbsp;{COIN_NAME}</span>}
                                 </Link>
                             </div>
                         </Col>
@@ -378,7 +385,8 @@ const AddressInfo = () => {
                                                         <span className={getAddrFromOutputs(txsInpCache[x.previous_outpoint_hash]["outputs"], x.previous_outpoint_index) == addr ? "highlight-addr" : ""}>{getAddrFromOutputs(txsInpCache[x.previous_outpoint_hash]["outputs"], x.previous_outpoint_index)}</span>
                                                     </Link>
                                                 </Col>
-                                                <Col xs={5}><span className="block-utxo-amount-minus">-{numberWithCommas(getAmountFromOutputs(txsInpCache[x.previous_outpoint_hash]["outputs"], x.previous_outpoint_index))}&nbsp;KAS</span></Col></Row></> : <li key={`${x.previous_outpoint_hash}${x.previous_outpoint_index}`}>{x.previous_outpoint_hash} #{x.previous_outpoint_index}</li>
+                                                {/* <Col xs={5}><span className="block-utxo-amount-minus">-{numberWithCommas(getAmountFromOutputs(txsInpCache[x.previous_outpoint_hash]["outputs"], x.previous_outpoint_index))}&nbsp;KAS</span></Col></Row></> : <li key={`${x.previous_outpoint_hash}${x.previous_outpoint_index}`}>{x.previous_outpoint_hash} #{x.previous_outpoint_index}</li> */}
+                                                <Col xs={5}><span className="block-utxo-amount-minus">-{numberWithCommas(getAmountFromOutputs(txsInpCache[x.previous_outpoint_hash]["outputs"], x.previous_outpoint_index))}&nbsp;{COIN_NAME}</span></Col></Row></> : <li key={`${x.previous_outpoint_hash}${x.previous_outpoint_index}`}>{x.previous_outpoint_hash} #{x.previous_outpoint_index}</li>
                                     }) : "COINBASE (New coins)"}
 
                                 </div>
@@ -394,7 +402,8 @@ const AddressInfo = () => {
                                                 </span>
                                             </Link>
                                         </Col>
-                                        <Col xs={5}><span className="block-utxo-amount">+{numberWithCommas(x.amount / 100000000)}&nbsp;KAS</span></Col></Row>)}
+                                        {/* <Col xs={5}><span className="block-utxo-amount">+{numberWithCommas(x.amount / 100000000)}&nbsp;KAS</span></Col></Row>)} */}
+                                        <Col xs={5}><span className="block-utxo-amount">+{numberWithCommas(x.amount / 100000000)}&nbsp;{COIN_NAME}</span></Col></Row>)}
                                 </div>
                             </Col>
                             <Col md={12}>
@@ -464,7 +473,8 @@ const AddressInfo = () => {
                         </Col>
                         <Col sm={6} md={4}>
                             <div className="utxo-header mt-3">amount</div>
-                            <div className="utxo-value d-flex flex-row"><div className="utxo-amount">+{numberWithCommas(x.utxoEntry.amount / 100000000)} KAS</div></div>
+                            {/* <div className="utxo-value d-flex flex-row"><div className="utxo-amount">+{numberWithCommas(x.utxoEntry.amount / 100000000)} KAS</div></div> */}
+                            <div className="utxo-value d-flex flex-row"><div className="utxo-amount">+{numberWithCommas(x.utxoEntry.amount / 100000000)} {COIN_NAME}</div></div>
                         </Col>
                         <Col sm={6} md={4}>
                             <div className="utxo-header mt-3">value</div>
