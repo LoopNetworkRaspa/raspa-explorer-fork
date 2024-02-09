@@ -30,7 +30,7 @@ import { getBlock } from './kaspa-api-client';
 
 const SOCKET_SERVER_URL = process.env.REACT_APP_SOCKET_SERVER_URL || "wss://api.kaspa.org"
 const REST_API_SERVER_URL = process.env.REACT_APP_REST_API_SERVER_URL || "https://api.kaspa.org"
-const COIN_NAME = process.env.REACT_APP_COIN_NAME || "KAS"
+const COIN_NAME = process.env.REACT_APP_COIN_NAME || "RAS"
 const BUILD_VERSION = process.env.REACT_APP_VERCEL_GIT_COMMIT_SHA || "xxxxxx"
 
 
@@ -211,13 +211,13 @@ function App() {
                   Forked from kaspa explorer made by kaspa developer
                   <span className="ms-3">
                     <OverlayTrigger placement="left" overlay={<Tooltip id="github">Source code</Tooltip>}>
-                      <a className="blockinfo-link" href="https://github.com/lAmeR1/kaspa-explorer" target="_blank"><FaGithub size="1.3rem" /></a>
+                      <a className="blockinfo-link" href="https://github.com/LoopNetworkRaspa/raspa-explorer-fork/tree/dev" target="_blank"><FaGithub size="1.3rem" /></a>
                     </OverlayTrigger>
                     <OverlayTrigger placement="right" overlay={<Tooltip id="donate">Donation address</Tooltip>}>
-                      <Link className="blockinfo-link ms-3" to="/addresses/kaspa:qqkqkzjvr7zwxxmjxjkmxxdwju9kjs6e9u82uh59z07vgaks6gg62v8707g73"><BiDonateHeart size="1.3rem" /></Link>
+                      <Link className="blockinfo-link ms-3" to="/addresses/raspadev:qqu724a52f77xuyvua7csu37pf3rlm6stmssqtnxvjw56r5g67r2cqhvsgmut"><BiDonateHeart size="1.3rem" /></Link>
                     </OverlayTrigger>
                     <OverlayTrigger placement="right" overlay={<Tooltip id="github">REST-API server</Tooltip>}>
-                      <a className="blockinfo-link ms-3" href="https://api.kaspa.org/" target="_blank"><SiFastapi size="1.3rem" /></a>
+                      <a className="blockinfo-link ms-3" href="https://rest.raspadev.blaize.technology/" target="_blank"><SiFastapi size="1.3rem" /></a>
                     </OverlayTrigger>
                   </span>
                   <span className="px-3 build">|</span>
@@ -233,13 +233,13 @@ function App() {
                 <Col>
                   <span className="ms-2">
                     <OverlayTrigger placement="left" overlay={<Tooltip id="github">Source code</Tooltip>}>
-                      <a className="blockinfo-link" href="https://github.com/lAmeR1/kaspa-explorer" target="_blank"><FaGithub size="1.1rem" /></a>
+                      <a className="blockinfo-link" href="https://github.com/LoopNetworkRaspa/raspa-explorer-fork/tree/dev" target="_blank"><FaGithub size="1.1rem" /></a>
                     </OverlayTrigger>
                     <OverlayTrigger placement="right" overlay={<Tooltip id="donate">Donation address</Tooltip>}>
-                      <Link className="blockinfo-link ms-2" to="/addresses/kaspa:qqkqkzjvr7zwxxmjxjkmxxdwju9kjs6e9u82uh59z07vgaks6gg62v8707g73"><BiDonateHeart size="1.1rem" /></Link>
+                      <Link className="blockinfo-link ms-2" to="/addresses/raspadev:qqu724a52f77xuyvua7csu37pf3rlm6stmssqtnxvjw56r5g67r2cqhvsgmut"><BiDonateHeart size="1.1rem" /></Link>
                     </OverlayTrigger>
                     <OverlayTrigger placement="right" overlay={<Tooltip id="github">REST-API server</Tooltip>}>
-                      <a className="blockinfo-link ms-2" href="https://api.kaspa.org/" target="_blank"><SiFastapi size="1.1rem" /></a>
+                      <a className="blockinfo-link ms-2" href="https://rest.raspadev.blaize.technology/" target="_blank"><SiFastapi size="1.1rem" /></a>
                     </OverlayTrigger>
                   </span>
                 </Col>
