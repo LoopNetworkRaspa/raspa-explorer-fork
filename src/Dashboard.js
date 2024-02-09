@@ -11,7 +11,9 @@ import CoinsupplyBox from './components/CoinsupplyBox';
 import KaspadInfoBox from './components/KaspadInfoBox';
 import MarketDataBox from './components/MarketDataBox';
 import TxOverview from './components/TxOverview';
-import {getBlock} from './kaspa-api-client';
+import { getBlock } from './kaspa-api-client';
+
+const ADDRESS_TYPE = process.env.REACT_APP_ADDRESS_TYPE || "kaspa"
 
 
 function Dashboard() {
@@ -24,8 +26,9 @@ function Dashboard() {
 
     const [showLoadingModal, setShowLoadingModal] = useState(false)
 
-    const [balance, setBalance] = useState(0);
-    const [address, setAddress] = useState("kaspa:");
+  const [balance, setBalance] = useState(0);
+  // const [address, setAddress] = useState("kaspa:");
+  const [address, setAddress] = useState(ADDRESS_TYPE + ":");
 
     const search = (e) => {
         e.preventDefault();
@@ -47,9 +50,10 @@ function Dashboard() {
             })
         }
 
-        if (v.startsWith("kaspa:")) {
-            navigate(`/addresses/${v}`)
-        }
+    // if (v.startsWith("kaspa:")) {
+    if (v.startsWith(ADDRESS_TYPE + ":")) {
+      navigate(`/addresses/${v}`)
+    }
 
         setShowLoadingModal(false);
 

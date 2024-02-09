@@ -5,6 +5,7 @@ import {numberWithCommas} from "../helper";
 import {getCoinSupply} from '../kaspa-api-client';
 import PriceContext from "./PriceContext";
 
+const COIN_NAME = process.env.REACT_APP_COIN_NAME || "KAS"
 
 const MarketDataBox = () => {
     const [circCoinsMData, setCircCoinsMData] = useState("-");
@@ -37,7 +38,8 @@ const MarketDataBox = () => {
                 </tr>
                 <tr>
                     <td className="cardBoxElement">Price</td>
-                    <td className="text-end">$ {price} / KAS</td>
+                    {/* <td>$ {price} / KAS</td> */}
+                    <td>$ 0.00 / {COIN_NAME}</td>
                 </tr>
                 <tr>
                     <td></td>

@@ -1,8 +1,11 @@
+const REST_API_SERVER_URL = process.env.REACT_APP_REST_API_SERVER_URL || "https://api.kaspa.org/"
+
 let queryBlock = null
 let blocksCache = []
 
 function updateQueryBlockFromBlockDag() {
-    fetch('https://api.kaspa.org/info/blockdag')
+    // fetch('https://api.kaspa.org/info/blockdag')
+    fetch(`${REST_API_SERVER_URL}/info/blockdag`)
         .then((response) => response.json())
         .then(d => {
             queryBlock = d.virtualParentHashes[0]
@@ -23,7 +26,8 @@ export function getNewBlocks(func, trimTo) {
         updateQueryBlockFromBlockDag()
     }
     if (queryBlock) {
-        fetch(`https://api.kaspa.org/blocks?lowHash=${queryBlock}&includeBlocks=true`)
+        // fetch(`https://api.kaspa.org/blocks?lowHash=${queryBlock}&includeBlocks=true`)
+        fetch(`${REST_API_SERVER_URL}/blocks?lowHash=${queryBlock}&includeBlocks=true`)
             .then((response) => response.json())
             .then(d => {
                 const blocks = d.blocks.map((x) => {

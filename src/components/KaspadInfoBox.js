@@ -3,13 +3,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useState } from "react";
 import { FaMemory } from 'react-icons/fa';
 
+const REST_API_SERVER_URL = process.env.REACT_APP_REST_API_SERVER_URL || "https://api.kaspa.org/"
 
 
 const KaspadInfoBox = () => {
     const [data, setData] = useState({});
 
     async function updateData() {
-        await fetch('https://api.kaspa.org/info/kaspad')
+        // await fetch('https://api.kaspa.org/info/kaspad')
+        await fetch(`${REST_API_SERVER_URL}/info/kaspad`)
             .then((response) => response.json())
             .then(d => setData(d))
             .catch(err => console.log("Error", err))

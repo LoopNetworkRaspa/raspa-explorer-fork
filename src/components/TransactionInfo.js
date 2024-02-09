@@ -13,6 +13,8 @@ import BlueScoreContext from "./BlueScoreContext.js";
 import CopyButton from "./CopyButton.js";
 import PriceContext from "./PriceContext.js";
 
+const COIN_NAME = process.env.REACT_APP_COIN_NAME || "KAS"
+
 const getOutputFromIndex = (outputs, index) => {
     console.log(outputs)
     for (const output of outputs) {
@@ -149,7 +151,8 @@ const TransactionInfo = () => {
                                     <Col className="blockinfo-key" lg={2}>Transaction fee</Col>
                                     <Col className="blockinfo-value-mono" lg={10}>
                                         {txInfo && additionalTxInfo &&
-                                            <>{(txInfo.inputs.map((tx_input) => (getOutputFromIndex(additionalTxInfo[tx_input.previous_outpoint_hash]?.outputs || [], tx_input.previous_outpoint_index)?.amount || 0)).reduce((a, b) => a + b) - (txInfo.outputs?.map((v) => v.amount) || [0]).reduce((a, b) => a + b)) / 100000000} KAS</>
+                                            // <>{(txInfo.inputs.map((tx_input) => (getOutputFromIndex(additionalTxInfo[tx_input.previous_outpoint_hash]?.outputs || [], tx_input.previous_outpoint_index)?.amount || 0)).reduce((a, b) => a + b) - (txInfo.outputs?.map((v) => v.amount) || [0]).reduce((a, b) => a + b)) / 100000000} KAS</>
+                                            <>{(txInfo.inputs.map((tx_input) => (getOutputFromIndex(additionalTxInfo[tx_input.previous_outpoint_hash]?.outputs || [], tx_input.previous_outpoint_index)?.amount || 0)).reduce((a, b) => a + b) - (txInfo.outputs?.map((v) => v.amount) || [0]).reduce((a, b) => a + b)) / 100000000} {COIN_NAME}</>
                                         }
                                     </Col>
                                 </Row>}
@@ -203,7 +206,8 @@ const TransactionInfo = () => {
                                                 <div className="blockinfo-key mt-2">Amount</div>
                                                 <div className="utxo-value">
                                                     <span className="utxo-amount-minus">-{getOutputFromIndex(additionalTxInfo[tx_input.previous_outpoint_hash]
-                                                        .outputs, tx_input.previous_outpoint_index).amount / 100000000}&nbsp;KAS</span>
+                                                        // .outputs, tx_input.previous_outpoint_index).amount / 100000000}&nbsp;KAS</span>
+                                                        .outputs, tx_input.previous_outpoint_index).amount / 100000000}&nbsp;{COIN_NAME}</span>
                                                 </div>
                                             </Col>}
                                             <Col sm={12} md={12} lg={12}>
@@ -249,7 +253,8 @@ const TransactionInfo = () => {
                                             <Col sm={6} md={6} lg={3}>
                                                 <div className="blockinfo-key mt-2 mt-lg-0">Amount</div>
                                                 <div className="utxo-value">
-                                                    <span className="utxo-amount">+{numberWithCommas(tx_output.amount / 100000000)}&nbsp;KAS</span>
+                                                    {/* <span className="utxo-amount">+{numberWithCommas(tx_output.amount / 100000000)}&nbsp;KAS</span> */}
+                                                    <span className="utxo-amount">+{numberWithCommas(tx_output.amount / 100000000)}&nbsp;{COIN_NAME}</span>
                                                 </div>
                                             </Col>
                                             <Col sm={12} md={12} lg={12}>

@@ -1,17 +1,21 @@
-# KASPA EXPLORER
+## Installation
 
-This is the source code for Kaspa Explorer [https://explorer.kaspa.org](https://explorer.kaspa.org) written in JS with React.JS library.
+```bash
+npm install
+```
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Set up the environment
+Create an `.env` file and add these environment variables:
+```
+REACT_APP_SOCKET_SERVER_URL="ws://[netloc][:port]"
+REACT_APP_REST_API_SERVER_URL="http://[netloc][:port]"
+REACT_APP_ADDRESS_TYPE="raspadev"
+REACT_APP_COIN_NAME="RAS"
+```
+>**Note:** If there is no connection to the database, then pay attention to the prefixes `ws` and `http` that are said in the environment variables
 
-## Development
+## Run
 
-For developing this you need Node.JS and just npm install.
-
-## Any ideas?
-
-Do you have any new ideas, wishes or bugs? Contact @lAmeR^#7173 at Discord.
-
-## DONATION ♥
-
-Please consider a donation for my work: [kaspa:qqkqkzjvr7zwxxmjxjkmxxdwju9kjs6e9u82uh59z07vgaks6gg62v8707g73](https://explorer.kaspa.org/addresses/kaspa:qqkqkzjvr7zwxxmjxjkmxxdwju9kjs6e9u82uh59z07vgaks6gg62v8707g73)
+```bash
+npm run start
+```

@@ -6,6 +6,8 @@ import { numberWithCommas } from "../helper";
 import { getCoinSupply, getHalving } from '../kaspa-api-client';
 import PriceContext from "./PriceContext";
 
+const REST_API_SERVER_URL = process.env.REACT_APP_REST_API_SERVER_URL || "https://api.kaspa.org/"
+const COIN_NAME = process.env.REACT_APP_COIN_NAME || "KAS"
 
 const CBox = () => {
     const [circCoins, setCircCoins] = useState("-");
@@ -42,7 +44,8 @@ const CBox = () => {
     }, [])
 
     async function getBlockReward() {
-        await fetch('https://api.kaspa.org/info/blockreward')
+        // await fetch('https://api.kaspa.org/info/blockreward')
+        await fetch(`${REST_API_SERVER_URL}/info/blockreward`)
             .then((response) => response.json())
             .then(d => {
                 setBlockReward(d.blockreward.toFixed(2))
@@ -97,7 +100,8 @@ const CBox = () => {
                 </tr>
                 <tr>
                     <td className="cardBoxElement align-top">Block reward</td>
-                    <td className="pt-1 text-end">{blockReward} KAS</td>
+                    {/* <td className="pt-1">{blockReward} KAS</td> */}
+                    <td className="pt-1">{blockReward} {COIN_NAME}</td>
                 </tr>
                 <tr>
                     <td className="cardBoxElement align-top">Reward reduction
@@ -107,7 +111,8 @@ const CBox = () => {
                             </span>
                         </OverlayTrigger> */}
                     </td>
-                    <td className="pt-1 text-end">{halvingDate}<br /><div className="text-end w-100 pt-1" style={{ fontSize: "small" }}>to {halvingAmount} KAS</div></td>
+                    {/* <td className="pt-1">{halvingDate}<br /><div className="text-end w-100 pe-3 pt-1" style={{ fontSize: "small" }}>to {halvingAmount} KAS</div></td> */}
+                    <td className="pt-1">{halvingDate}<br /><div className="text-end w-100 pe-3 pt-1" style={{ fontSize: "small" }}>to {halvingAmount} {COIN_NAME}</div></td>
                 </tr>
             </table>
         </div>
