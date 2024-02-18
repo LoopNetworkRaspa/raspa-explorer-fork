@@ -16,7 +16,7 @@ import UtxoPagination from "./UtxoPagination.js";
 import QRCodeStyling from "qr-code-styling";
 import QrButton from "./QrButton";
 
-const ADDRESS_TYPE = process.env.REACT_APP_ADDRESS_TYPE || "kaspa"
+const ADDRESS_TYPE = process.env.REACT_APP_ADDRESS_TYPE || "raspa"
 const COIN_NAME = process.env.REACT_APP_COIN_NAME || "RAS"
 
 const AddressInfoPage = () => {
@@ -111,7 +111,7 @@ const AddressInfo = () => {
             width: 200,
             height: 200,
             type: "svg",
-            image: "../kaspa-icon.png",
+            image: "../k-icon-glow.png",
             dotsOptions: {
                 color: "#181D30",
                 type: "extra-rounded",

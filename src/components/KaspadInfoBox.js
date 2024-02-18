@@ -11,7 +11,7 @@ const KaspadInfoBox = () => {
 
     async function updateData() {
         // await fetch('https://api.kaspa.org/info/kaspad')
-        await fetch(`${REST_API_SERVER_URL}/info/kaspad`)
+        await fetch(`${REST_API_SERVER_URL}/info/raspad`)
             .then((response) => response.json())
             .then(d => setData(d))
             .catch(err => console.log("Error", err))
@@ -29,7 +29,7 @@ const KaspadInfoBox = () => {
                 <tr>
                     <td colspan='2' className="text-center" style={{ "fontSize": "4rem" }}>
                         <FontAwesomeIcon icon={faMemory} />
-                        <div />
+                        <div className="cardLight" />
                     </td>
                 </tr>
                 <tr>

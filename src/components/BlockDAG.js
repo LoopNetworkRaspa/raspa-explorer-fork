@@ -96,7 +96,7 @@ const BlockDAGBox = () => {
                 <tr>
                     <td colspan='2' className="text-center" style={{ "fontSize": "4rem" }}>
                         <FontAwesomeIcon icon={faDiagramProject} />
-                        <div />
+                        <div className="cardLight" />
                     </td>
                 </tr>
                 <tr>

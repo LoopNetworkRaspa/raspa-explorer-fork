@@ -77,7 +77,7 @@ export const parsePayload = (payload) => {
     if (script[0] < 0x76) {
         const address_size = script[0];
         let address = script.slice(1, address_size + 1);
-        return [encodeAddress("kaspa", address, version), String.fromCharCode(...buffer.slice(19 + length, buffer.length))];
+        return [encodeAddress("raspadev", address, version), "0.12.14/raspaminer-0.12.14"];//String.fromCharCode(...buffer.slice(19 + length, buffer.length))];
     }
     return [payload, ""];
 }

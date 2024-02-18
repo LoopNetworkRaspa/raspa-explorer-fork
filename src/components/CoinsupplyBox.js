@@ -74,7 +74,7 @@ const CBox = () => {
                 <tr>
                     <td colspan='2' className="text-center" style={{ "fontSize": "4rem" }}>
                         <FontAwesomeIcon icon={faCoins} />
-                        <div id="light1"  />
+                        <div id="light1" className="cardLight" />
                     </td>
                 </tr>
                 <tr>
@@ -101,7 +101,7 @@ const CBox = () => {
                 <tr>
                     <td className="cardBoxElement align-top">Block reward</td>
                     {/* <td className="pt-1">{blockReward} RAS</td> */}
-                    <td className="pt-1">{blockReward} {COIN_NAME}</td>
+                    <td className="pt-1 text-end">{blockReward} {COIN_NAME}</td>
                 </tr>
                 <tr>
                     <td className="cardBoxElement align-top">Reward reduction
@@ -112,7 +112,7 @@ const CBox = () => {
                         </OverlayTrigger> */}
                     </td>
                     {/* <td className="pt-1">{halvingDate}<br /><div className="text-end w-100 pe-3 pt-1" style={{ fontSize: "small" }}>to {halvingAmount} RAS</div></td> */}
-                    <td className="pt-1">{halvingDate}<br /><div className="text-end w-100 pe-3 pt-1" style={{ fontSize: "small" }}>to {halvingAmount} {COIN_NAME}</div></td>
+                    <td className="pt-1 text-end">{halvingDate}<br /><div className="text-end w-100 pe-3 pt-1" style={{ fontSize: "small" }}>to {halvingAmount} {COIN_NAME}</div></td>
                 </tr>
             </table>
         </div>
